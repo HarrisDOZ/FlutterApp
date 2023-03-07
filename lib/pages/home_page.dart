@@ -5,7 +5,8 @@ class HomePage extends StatelessWidget {
   HomePage({super.key});
 
   final user = FirebaseAuth.instance.currentUser!;
-
+  final ScrollController _horizontal = ScrollController(),
+      _horizontal2 = ScrollController();
   void signUserOut() {
     FirebaseAuth.instance.signOut();
   }
@@ -184,18 +185,33 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  singalHose(),
-                  singalHose(),
-                  singalHose(),
-                  singalHose(),
-                  singalHose(),
-                  singalHose(),
-                  singalHose(),
-                ],
+            SizedBox(
+              height: 305,
+              width: 245,
+              child: Scrollbar(
+                controller: _horizontal,
+                thumbVisibility: true,
+                trackVisibility: true,
+                //notificationPredicate: (notif) => notif.depth == 1,
+                child: SingleChildScrollView(
+                  controller: _horizontal,
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      singalHose(),
+                      singalHose(),
+                      singalHose(),
+                      singalHose(),
+                      singalHose(),
+                      singalHose(),
+                      singalHose(),
+                      singalHose(),
+                      singalHose(),
+                      singalHose(),
+                      singalHose(),
+                    ],
+                  ),
+                ),
               ),
             ),
             Padding(
@@ -211,18 +227,33 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  singalHose(),
-                  singalHose(),
-                  singalHose(),
-                  singalHose(),
-                  singalHose(),
-                  singalHose(),
-                  singalHose(),
-                ],
+            SizedBox(
+              height: 305,
+              width: 245,
+              child: Scrollbar(
+                controller: _horizontal2,
+                thumbVisibility: true,
+                trackVisibility: true,
+                //notificationPredicate: (notif) => notif.depth == 1,
+                child: SingleChildScrollView(
+                  controller: _horizontal2,
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      singalHose(),
+                      singalHose(),
+                      singalHose(),
+                      singalHose(),
+                      singalHose(),
+                      singalHose(),
+                      singalHose(),
+                      singalHose(),
+                      singalHose(),
+                      singalHose(),
+                      singalHose(),
+                    ],
+                  ),
+                ),
               ),
             ),
           ],
