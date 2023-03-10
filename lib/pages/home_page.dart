@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:modernlogintute/components/iconWidget.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -7,6 +8,7 @@ class HomePage extends StatelessWidget {
   final user = FirebaseAuth.instance.currentUser!;
   final ScrollController _horizontal = ScrollController(),
       _horizontal2 = ScrollController();
+
   void signUserOut() {
     FirebaseAuth.instance.signOut();
   }
@@ -70,11 +72,158 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  Widget listTitle({required IconData icon, required String title}) {
+    return ListTile(
+      leading: Icon(
+        icon,
+        size: 32,
+      ),
+      title: Text(
+        title,
+        style: TextStyle(color: Colors.black),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffcbcbcb),
-      drawer: Drawer(),
+      drawer: Drawer(
+        child: Container(
+          color: Colors.blueAccent,
+          child: ListView(
+            children: [
+              DrawerHeader(
+                child: Row(
+                  children: [
+                    CircleAvatar(
+                      backgroundColor: Colors.white54,
+                      radius: 43,
+                      child: CircleAvatar(
+                        radius: 40,
+                        backgroundColor: Colors.blue,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Bienvenido:'),
+                        Text('' + user.email!),
+                        SizedBox(
+                          height: 7,
+                        ),
+                        Container(
+                          height: 30,
+                          child: OutlinedButton(
+                            onPressed: () {},
+                            child: Text(
+                              'Login',
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                height: 350,
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: Column(
+                  children: [
+                    IconWidget(
+                      icon: Icons.home,
+                      title: 'HOME',
+                      name: 'HOME',
+                    ),
+                    IconWidget(
+                      icon: Icons.notifications,
+                      title: 'NOTIFICATIONS',
+                      name: 'NOTIFICACIONES',
+                    ),
+                    IconWidget(
+                      icon: Icons.person,
+                      title: 'PROFILE',
+                      name: 'PERFIL',
+                    ),
+                    IconWidget(
+                      icon: Icons.favorite_border,
+                      title: 'FAV',
+                      name: 'FAVORITOS',
+                    ),
+                    IconWidget(
+                      icon: Icons.star,
+                      title: 'BEST',
+                      name: 'RECOMENDACIONES',
+                    ),
+                    IconWidget(
+                      icon: Icons.add_home,
+                      title: 'ADD_HOME',
+                      name: 'AÑADIR CASA',
+                    ),
+                    IconWidget(
+                      icon: Icons.accessibility_new_sharp,
+                      title: 'SEARCH ROOMIE',
+                      name: 'BUSCAR ROOMIE',
+                    ),
+                    IconWidget(
+                      icon: Icons.feed_rounded,
+                      title: 'RAISE A COMPLAINT',
+                      name: 'QUEJAS',
+                    ),
+                    IconWidget(
+                      icon: Icons.forum_outlined,
+                      title: 'FAQs',
+                      name: 'PREGUNTAS FRECUENTES',
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: 350,
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  children: [
+                    Text("Contact Support"),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        Text('Telefono:'),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text('2221405546'),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        Text('Email:'),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text('harris2-95@hotmail.com'),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
         title: Text(
