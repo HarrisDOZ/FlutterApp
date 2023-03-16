@@ -1,6 +1,12 @@
+import 'dart:js';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:modernlogintute/components/DrawerSide.dart';
 import 'package:modernlogintute/components/iconWidget.dart';
+import 'package:modernlogintute/pages/home_list.dart';
+import 'package:modernlogintute/pages/home_overview.dart';
+import 'package:modernlogintute/pages/my_profile.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -13,59 +19,28 @@ class HomePage extends StatelessWidget {
     FirebaseAuth.instance.signOut();
   }
 
-  Widget singalHose() {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10),
-      height: 300,
-      width: 240,
-      decoration: BoxDecoration(
-        color: Color(0xffd9dad9),
-        //borderRadius: BorderRadius.circular(10),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+  Widget singalHose(context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
         children: [
-          Expanded(
-            child: Image.network('https://www.nocnok.com/hubfs/casa-lujo.webp'),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 10,
-                vertical: 5,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Contacto: 55555555',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
+          HomeList(
+            houseImage:
+                'https://img.vivanuncios.com.mx/api/v1/mx-ads/images/c1/c161293e-6e46-4a06-9bee-d4897d4caf6a?rule=s-I72.auto',
+            houseDate: 'Contacto',
+            houseAddress: 'Dirección',
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => HoseOverview(
+                    houseImage:
+                        'https://img.vivanuncios.com.mx/api/v1/mx-ads/images/c1/c161293e-6e46-4a06-9bee-d4897d4caf6a?rule=s-I72.auto',
+                    houseDate: 'Contacto',
+                    houseAddress: 'Dirección',
                   ),
-                  Text(
-                    'Dirección',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: FloatingActionButton(
-                          onPressed: () {
-                            // Add your onPressed code here!
-                          },
-                          backgroundColor: Colors.blue,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+                ),
+              );
+            },
           )
         ],
       ),
@@ -89,141 +64,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffcbcbcb),
-      drawer: Drawer(
-        child: Container(
-          color: Colors.blueAccent,
-          child: ListView(
-            children: [
-              DrawerHeader(
-                child: Row(
-                  children: [
-                    CircleAvatar(
-                      backgroundColor: Colors.white54,
-                      radius: 43,
-                      child: CircleAvatar(
-                        radius: 40,
-                        backgroundColor: Colors.blue,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('Bienvenido:'),
-                        Text('' + user.email!),
-                        SizedBox(
-                          height: 7,
-                        ),
-                        Container(
-                          height: 30,
-                          child: OutlinedButton(
-                            onPressed: () {},
-                            child: Text(
-                              'Login',
-                              style: TextStyle(color: Colors.black),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                height: 350,
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Column(
-                  children: [
-                    IconWidget(
-                      icon: Icons.home,
-                      title: 'HOME',
-                      name: 'HOME',
-                    ),
-                    IconWidget(
-                      icon: Icons.notifications,
-                      title: 'NOTIFICATIONS',
-                      name: 'NOTIFICACIONES',
-                    ),
-                    IconWidget(
-                      icon: Icons.person,
-                      title: 'PROFILE',
-                      name: 'PERFIL',
-                    ),
-                    IconWidget(
-                      icon: Icons.favorite_border,
-                      title: 'FAV',
-                      name: 'FAVORITOS',
-                    ),
-                    IconWidget(
-                      icon: Icons.star,
-                      title: 'BEST',
-                      name: 'RECOMENDACIONES',
-                    ),
-                    IconWidget(
-                      icon: Icons.add_home,
-                      title: 'ADD_HOME',
-                      name: 'AÑADIR CASA',
-                    ),
-                    IconWidget(
-                      icon: Icons.accessibility_new_sharp,
-                      title: 'SEARCH ROOMIE',
-                      name: 'BUSCAR ROOMIE',
-                    ),
-                    IconWidget(
-                      icon: Icons.feed_rounded,
-                      title: 'RAISE A COMPLAINT',
-                      name: 'QUEJAS',
-                    ),
-                    IconWidget(
-                      icon: Icons.forum_outlined,
-                      title: 'FAQs',
-                      name: 'PREGUNTAS FRECUENTES',
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Container(
-                height: 350,
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  children: [
-                    Text("Contact Support"),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      children: [
-                        Text('Telefono:'),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text('2221405546'),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      children: [
-                        Text('Email:'),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text('harris2-95@hotmail.com'),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+      drawer: DrawerSide(),
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
         title: Text(
@@ -347,17 +188,10 @@ class HomePage extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      singalHose(),
-                      singalHose(),
-                      singalHose(),
-                      singalHose(),
-                      singalHose(),
-                      singalHose(),
-                      singalHose(),
-                      singalHose(),
-                      singalHose(),
-                      singalHose(),
-                      singalHose(),
+                      singalHose(context),
+                      singalHose(context),
+                      singalHose(context),
+                      singalHose(context),
                     ],
                   ),
                 ),
@@ -389,17 +223,12 @@ class HomePage extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      singalHose(),
-                      singalHose(),
-                      singalHose(),
-                      singalHose(),
-                      singalHose(),
-                      singalHose(),
-                      singalHose(),
-                      singalHose(),
-                      singalHose(),
-                      singalHose(),
-                      singalHose(),
+                      singalHose(context),
+                      singalHose(context),
+                      singalHose(context),
+                      singalHose(context),
+                      singalHose(context),
+                      singalHose(context),
                     ],
                   ),
                 ),
