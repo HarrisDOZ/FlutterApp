@@ -7,6 +7,7 @@ import 'package:modernlogintute/components/iconWidget.dart';
 import 'package:modernlogintute/pages/home_list.dart';
 import 'package:modernlogintute/pages/home_overview.dart';
 import 'package:modernlogintute/pages/my_profile.dart';
+import 'package:modernlogintute/pages/search.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -47,19 +48,6 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget listTitle({required IconData icon, required String title}) {
-    return ListTile(
-      leading: Icon(
-        icon,
-        size: 32,
-      ),
-      title: Text(
-        title,
-        style: TextStyle(color: Colors.black),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,9 +63,16 @@ class HomePage extends StatelessWidget {
           CircleAvatar(
             radius: 16,
             backgroundColor: Colors.white,
-            child: Icon(
-              Icons.search,
-              size: 24,
+            child: IconButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => Search(),
+                ));
+              },
+              icon: Icon(
+                Icons.search,
+                size: 24,
+              ),
             ),
           ),
           IconButton(

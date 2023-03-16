@@ -12,14 +12,19 @@ class DrawerSide extends StatefulWidget {
 }
 
 class _DrawerSideState extends State<DrawerSide> {
-  Widget listTile(
-      {required String title,
-      required IconData iconData,
-      required Function onTap}) {
+  Widget listTile({
+    required String title,
+    required IconData iconData,
+    required Function onTap,
+  }) {
     return Container(
       height: 50,
       child: ListTile(
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => MyProfile(),
+          ));
+        },
         leading: Icon(
           iconData,
           size: 28,
@@ -77,112 +82,86 @@ class _DrawerSideState extends State<DrawerSide> {
                 ],
               ),
             ),
-            Container(
-              height: 350,
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                children: [
-                  IconWidget(
-                    icon: Icons.home,
-                    title: 'HOME',
-                    name: 'HOME',
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => MyProfile(),
-                      ));
-                    },
-                  ),
-                  IconWidget(
-                    icon: Icons.notifications,
-                    title: 'NOTIFICATIONS',
-                    name: 'NOTIFICACIONES',
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => MyProfile(),
-                      ));
-                    },
-                  ),
-                  IconWidget(
-                    icon: Icons.person,
-                    title: 'PROFILE',
-                    name: 'PERFIL',
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => MyProfile(),
-                      ));
-                    },
-                  ),
-                  IconWidget(
-                    icon: Icons.favorite_border,
-                    title: 'FAV',
-                    name: 'FAVORITOS',
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => MyProfile(),
-                      ));
-                    },
-                  ),
-                  IconWidget(
-                    icon: Icons.star,
-                    title: 'BEST',
-                    name: 'RECOMENDACIONES',
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => MyProfile(),
-                      ));
-                    },
-                  ),
-                  IconWidget(
-                    icon: Icons.add_home,
-                    title: 'ADD_HOME',
-                    name: 'AÑADIR CASA',
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => MyProfile(),
-                      ));
-                    },
-                  ),
-                  IconWidget(
-                    icon: Icons.accessibility_new_sharp,
-                    title: 'SEARCH ROOMIE',
-                    name: 'BUSCAR ROOMIE',
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => MyProfile(),
-                      ));
-                    },
-                  ),
-                  IconWidget(
-                    icon: Icons.feed_rounded,
-                    title: 'RAISE A COMPLAINT',
-                    name: 'QUEJAS',
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => MyProfile(),
-                      ));
-                    },
-                  ),
-                  IconWidget(
-                    icon: Icons.forum_outlined,
-                    title: 'FAQs',
-                    name: 'PREGUNTAS FRECUENTES',
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => MyProfile(),
-                      ));
-                    },
-                  ),
-                  listTile(
-                    title: "title",
-                    iconData: Icons.abc_outlined,
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => MyProfile(),
-                      ));
-                    },
-                  )
-                ],
-              ),
+            listTile(
+              iconData: Icons.home,
+              title: 'INICIO',
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => MyProfile(),
+                ));
+              },
+            ),
+            listTile(
+              iconData: Icons.notifications,
+              title: 'NOTIFICAIONES',
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => MyProfile(),
+                ));
+              },
+            ),
+            listTile(
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => MyProfile(),
+                ));
+              },
+              iconData: Icons.person,
+              title: 'PERFIL',
+            ),
+            listTile(
+              iconData: Icons.favorite_border,
+              title: 'FAVORITOS',
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => MyProfile(),
+                ));
+              },
+            ),
+            listTile(
+              iconData: Icons.star,
+              title: 'RECOMENDACIONES',
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => MyProfile(),
+                ));
+              },
+            ),
+            listTile(
+              iconData: Icons.add_home,
+              title: 'AGREGAR CASA',
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => MyProfile(),
+                ));
+              },
+            ),
+            listTile(
+              iconData: Icons.accessibility,
+              title: 'BUSCAR ROOMIE',
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => MyProfile(),
+                ));
+              },
+            ),
+            listTile(
+              iconData: Icons.feed_rounded,
+              title: 'QUEJAS',
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => MyProfile(),
+                ));
+              },
+            ),
+            listTile(
+              iconData: Icons.forum_outlined,
+              title: 'FAQs',
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => MyProfile(),
+                ));
+              },
             ),
             SizedBox(
               height: 20,

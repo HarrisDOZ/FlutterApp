@@ -22,7 +22,7 @@ class AuthService {
       final User? user = (await _auth.signInWithCredential(credential)).user;
       // print("signed in " + user.displayName);
 
-      return user;
+      return await FirebaseAuth.instance.signInWithCredential(credential);
     } catch (e) {}
   }
 }
